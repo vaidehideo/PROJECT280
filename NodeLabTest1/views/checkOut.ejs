@@ -103,19 +103,21 @@
         <!-- /.container -->
     </nav>
     </header>
-    
-    <div class="box">
-                <div class="col-lg-12">
-                    <div class="row">
-    <div class="col-sm-4">.col-sm-4</div>
-  <div class="col-sm-4">.col-sm-4</div>
-  <div class="col-sm-4">.col-sm-4</div>
-  </div>
-                   </div>
-            </div>
+    <br><br>  
+    <div class="box" style="background-color:black;color:white;" align="center">
+      <div align="center" style="font-size:150%;">Your Cart</div>
+       <hr>
+     <div ng-repeat="item in cartItems">
+          <div class="row">
+  <div class="col-sm-4" style="font-size:130%;">{{item.name}}</div>
+  <div class="col-sm-4" style="font-size:130%;">{{item.cost}}</div>
+  <div class="col-sm-4" style="font-size:130%;"> <a href="" ng-click="removeItem(item)">Remove</a> </div>
+</div>
+   </div>
+   </div>
             
-            
-<div class="box" align="center">
+<br><br>            
+<div class="box" style="background-color:black;color:white;" align="center">
   <div class="col-lg-12">
   <div align="center" style="font-size:150%;">Address</div>
     <hr>
@@ -138,7 +140,7 @@
 
 
 
-<div class="box" align="center">
+<div class="box" style="background-color:black;color:white;" align="center">
   <div class="col-lg-12">
   <div align="center" style="font-size:150%;">Pay For Your Order</div>
     <hr>
@@ -199,6 +201,7 @@
        }
     function checkOutController($scope,$http,$location) {
     	displayCart();
+    	$scope.cartItems=JSON.parse(sessionStorage.getItem("cart"));
     	
     	function displayCart(){
     	if(JSON.parse(sessionStorage.getItem("cart"))!=null)
@@ -317,6 +320,32 @@
 	        });
 		    };   	
 		    	
+       	$scope.removeItem = function(item) {
+       	if(JSON.parse(sessionStorage.getItem("cart"))!=null)
+    	{
+    	var itemNumber = JSON.parse(sessionStorage.getItem("cart")).length;
+    	var cart= JSON.parse(sessionStorage.getItem("cart"));
+    	
+    	for (var i=0;i<itemNumber;i++) {
+    	   console.log(cart[i].name);
+	       console.log(item.name);
+	      if(!(item.name).localeCompare(cart[i].name))
+	      {
+	      alert("ho");
+	      cart.splice(i,1);
+	      sessionStorage.setItem("cart",JSON.stringify(cart));
+	      break;
+	      }
+	      else
+	      {
+	      alert("no");
+	         console.log(cart[i].name);
+	       console.log(item.name);
+	      }
+	       	}
+	      	$scope.cartItems=JSON.parse(sessionStorage.getItem("cart"));
+        	}
+       	};
        	
 		$scope.homePage = function() {
 		window.location = '/index';

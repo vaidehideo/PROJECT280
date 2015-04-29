@@ -179,19 +179,72 @@
   			      <div class="row">
       
   			<div class="col-sm-6" style="color:#fdcc3b; border:3px solid #d4a26f ;">
-  			
-  			<h3>ORDER</h3>
+  			<br>
+  			<figure>
+  			<img  align="left" src="img/pepperoni.jpg" width="200" height="100" alt="">
+  			<h4>PEPPERONI LOVER</h4>
+  			<figcaption style="font-size: 1.20em;color:white">Classic marinara sauce topped with 50% more cheese, sweet red onions, fresh white mushrooms and extra pepperoni.</figcaption>
+			</figure>	
+			<br>
+			
+<div style="padding-right:10px;float:left;">
+<select style="border-radius: 25px;border:3px solid;color:grey;text-indent:2px;font-weight:bold" id="p3">
+  <option value="Pan Pizza">Pan Pizza</option>
+  <option value="Hand Tossed">Hand Tossed Pizza</option>
+  <option value="Cheesy Crust">Cheesy Crust</option>
+  <option value="Thin Crispy">Thin & Crispy</option>
+</select>
+</div>
+
+<div style="float:left;">
+<select style="border-radius: 25px;border:3px solid;color:grey;text-indent:2px;font-weight:bold" id="ps3">
+  <option value="Large">Large</option>
+  <option value="Medium">Medium</option>
+  <option value="Small">Small</option>
+</select>
+</div>		
+<span style="float:left;padding-left:0.5cm;font-size:170%;color:white;"><strong>$16.99</strong></span>	
+			<button type="button" class="btn btn-warning" ng-click="addOrder(3)">Add to Order</button>
+			<br><br>
   			</div>
   					
   			<div class="col-sm-6" style="color:#fdcc3b; border:3px solid #d4a26f ;">
-  			<h3>ORDER</h3>
+  			<br>
+  			<figure>
+  			<img  align="left" src="img/hawaiian.jpg" width="200" height="100" alt="">
+  			<h4>HAWAIIAN LOVER</h4>
+  			<figcaption style="font-size: 1.20em;color:white">An Island Escape: Slow-roasted ham, tropical pineapple, and smoked bacon flavored up with toasted cheddar.</figcaption>
+			</figure>	
+			<br>
+			
+<div style="padding-right:10px;float:left;">
+<select style="border-radius: 25px;border:3px solid;color:grey;text-indent:2px;font-weight:bold" id="p4">
+  <option value="Pan Pizza">Pan Pizza</option>
+  <option value="Hand Tossed">Hand Tossed Pizza</option>
+  <option value="Cheesy Crust">Cheesy Crust</option>
+  <option value="Thin Crispy">Thin & Crispy</option>
+</select>
+</div>
+
+<div style="float:left;">
+<select style="border-radius: 25px;border:3px solid;color:grey;text-indent:2px;font-weight:bold" id="ps4">
+  <option value="Large">Large</option>
+  <option value="Medium">Medium</option>
+  <option value="Small">Small</option>
+</select>
+</div>		
+<span style="float:left;padding-left:0.5cm;font-size:170%;color:white;"><strong>$14.99</strong></span>	
+			<button type="button" class="btn btn-warning" ng-click="addOrder(4)">Add to Order</button>
+			<br><br>
   			</div>
+  			
   			</div>
   			</div>
     
     
     
     </header>
+    <br><br>
     <footer>
 
         <div class="container" align="center">
@@ -263,6 +316,14 @@
            	else if(pizzaType==2)
            	{
            	var item={"name":"Cheese Lover","crust":document.getElementById("p2").value,"vegnv":"v","side":"","cost":"15.99","topping1":"Cheese","topping2":"","topping3":"","topping4":"","topping5":"","topping6":"","topping7":"","topping8":"","size":document.getElementById("ps2").value};
+           	}
+           	else if(pizzaType==3)
+           	{
+           	var item={"name":"Pepperoni Lover","crust":document.getElementById("p3").value,"vegnv":"nv","side":"","cost":"16.99","topping1":"Cheese","topping2":"Onions","topping3":"Mushrooms","topping4":"Pepperoni","topping5":"","topping6":"","topping7":"","topping8":"","size":document.getElementById("ps3").value};
+           	}
+           	else if(pizzaType==4)
+           	{
+           	var item={"name":"Hawaiian Lover","crust":document.getElementById("p4").value,"vegnv":"nv","side":"","cost":"14.99","topping1":"Ham","topping2":"Pineapple","topping3":"Bacon","topping4":"Cheddar","topping5":"","topping6":"","topping7":"","topping8":"","size":document.getElementById("ps4").value};
            	}
              	var cart= JSON.parse(sessionStorage.getItem("cart"));
        	if(cart==null)

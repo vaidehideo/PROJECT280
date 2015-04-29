@@ -314,7 +314,7 @@
 	            method: 'GET',
 	            url: '/likeUs',
 	          }).success(function(response){
-	          alert("Thanks");
+	        
 	     }).error(function(error){
 	            alert("error");
 	        });
@@ -331,19 +331,17 @@
 	       console.log(item.name);
 	      if(!(item.name).localeCompare(cart[i].name))
 	      {
-	      alert("ho");
 	      cart.splice(i,1);
 	      sessionStorage.setItem("cart",JSON.stringify(cart));
 	      break;
 	      }
 	      else
 	      {
-	      alert("no");
-	         console.log(cart[i].name);
-	       console.log(item.name);
+	    
 	      }
 	       	}
 	      	$scope.cartItems=JSON.parse(sessionStorage.getItem("cart"));
+	      	displayCart();
         	}
        	};
        	

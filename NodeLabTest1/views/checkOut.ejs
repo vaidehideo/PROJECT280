@@ -25,13 +25,13 @@
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
-	
-	<!-- jQuery -->
+    
+   <!-- jQuery -->
     <script src="js/jquery.js" defer></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js" defer></script>
-    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -49,7 +49,7 @@
 </head>
 
 <body>
-<div ng-app="" ng-controller="contactUsController">
+<div ng-app="" ng-controller="checkOutController">
 <header>
     <div class="brand">Pizza Lelo Pizza</div>
     <div class="address-bar">Happy Pizzas To Make Happy Times</div>
@@ -86,22 +86,86 @@
                     <li>
                         <a href="#" ng-click="dealsPage()">DEALS</a>
                     </li>
-                   <li>
+                   <li class="active">
                         <a href="#" ng-click="findUsPage()">Find Us</a>
                     </li>
-               <li class="dropdown">
-          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span> <span  id="itemNumber"></span><span class="caret"></span></a>
-         	<ul class="dropdown-menu" id="theCart" role="menu">
+                <li class="dropdown">
+          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span><span  id="itemNumber"></span> <span class="caret"></span></a>
+         <ul class="dropdown-menu" role="menu"  id="theCart" style="color:grey;padding-left:0.2cm;">
+           
             </ul>
-             </li>
+           </li>
                 </ul>
-              
+               
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
     </header>
+    
+    <div class="box">
+                <div class="col-lg-12">
+                    <div class="row">
+    <div class="col-sm-4">.col-sm-4</div>
+  <div class="col-sm-4">.col-sm-4</div>
+  <div class="col-sm-4">.col-sm-4</div>
+  </div>
+                   </div>
+            </div>
+            
+            
+<div class="box" align="center">
+  <div class="col-lg-12">
+  <div align="center" style="font-size:150%;">Address</div>
+    <hr>
+	<form class="form-inline">
+  	<div class="form-group">
+    <input type="text" class="form-control" id="address" placeholder="Address Line 1" style="width:400px;" required>
+  </div>
+  <div class="form-group">
+      <input type="text" class="form-control" id="city" placeholder="City" required>
+  </div>
+   <div class="form-group">
+    <input type="text" class="form-control" id="state" placeholder="State" required>
+  </div>
+   <div class="form-group">
+    <input type="text" class="form-control" id="zipcode" placeholder="Zip Code">
+  </div>
+  </form>
+ </div>
+</div>
+
+
+
+<div class="box" align="center">
+  <div class="col-lg-12">
+  <div align="center" style="font-size:150%;">Pay For Your Order</div>
+    <hr>
+	<form class="form-inline">
+  	<div class="form-group">
+  	<input type="text" class="form-control" id="cardNumber" placeholder="Card Number" style="width:200px;">
+  	</div>
+  <div class="form-group">
+      <input type="text" class="form-control" id="name" placeholder="Name on Card" style="width:200px;">
+  </div>
+   <div class="form-group">
+    <input type="month" class="form-control" id="expiration" placeholder="Expiration Date" required>
+  </div>
+   <div class="form-group">
+    <input type="text" class="form-control" id="billZipcode" placeholder="Billing ZipCode">
+  </div>
+  </form>
+ </div>
+</div>
+
+      
+      
+    <div  align="center">  
+    <button type="button" class="btn btn-warning" ng-click="placeOrder()">Place Order</button>
+    <button type="button" class="btn btn-warning" ng-click="likeUs()" id="like" style="margin-left:1cm;">Like Us</button>
+    </div>
+    <br>
     <footer>
 
         <div class="container" align="center">
@@ -128,43 +192,132 @@
     </footer>
     </div> <!-- ng-app -->
     
-       <script defer>
+       <script>
      function checkOutPage()
        {
              	window.location = '/checkOutPage';
        }
-    function contactUsController($scope,$http,$location) {
-    		displayCart();
-         
-           	function displayCart(){
-           	if(JSON.parse(sessionStorage.getItem("cart"))!=null)
-           	{
-           	var itemNumber = JSON.parse(sessionStorage.getItem("cart")).length;
-           	document.getElementById("itemNumber").innerHTML=itemNumber;
-           	var cart= JSON.parse(sessionStorage.getItem("cart"));
-           		var ul = document.getElementById("theCart");
-           		ul.innerHTML = '';
-           		
-           	for (var i=0;i<itemNumber;i++) {
-       	      	var ul = document.getElementById("theCart");
-       	    	var li = document.createElement("li");
-       	    	ul.appendChild(li);
-       	    	li.innerHTML = '<a href="">'+cart[i].name+'--$'+cart[i].cost+'</a>';
-       	       	}
-       	       	
-       	       	var li = document.createElement("li");
-       	    	ul.appendChild(li);
-       	    	li.innerHTML = '<div style="text-align: center;"><button type="button" class="btn btn-warning" onclick="checkOutPage()">Checkout</button></div>';
-       	    	
-       	       	}
-       	       	else
-       	       	{
-       	       	var ul = document.getElementById("theCart");
-    			ul.innerHTML = '';
-    			document.getElementById("itemNumber").innerHTML="";
-       	       	}
+    function checkOutController($scope,$http,$location) {
+    	displayCart();
+    	
+    	function displayCart(){
+    	if(JSON.parse(sessionStorage.getItem("cart"))!=null)
+    	{
+    	var itemNumber = JSON.parse(sessionStorage.getItem("cart")).length;
+    	document.getElementById("itemNumber").innerHTML=itemNumber;
+    	var cart= JSON.parse(sessionStorage.getItem("cart"));
+    		var ul = document.getElementById("theCart");
+    		ul.innerHTML = '';
+    		
+    	for (var i=0;i<itemNumber;i++) {
+	      	var ul = document.getElementById("theCart");
+	    	var li = document.createElement("li");
+	    	ul.appendChild(li);
+	    	li.innerHTML = '<a href="">'+cart[i].name+'</a>';
+	       	}
+	       	
+	       	var li = document.createElement("li");
+	    	ul.appendChild(li);
+	    	li.innerHTML = '<div style="text-align: center;"><button type="button" class="btn btn-warning" onclick="checkOutPage()">Checkout</button></div>';
+	    	
+	       	}
+	       	else
+	       	{
+	       	var ul = document.getElementById("theCart");
+    		ul.innerHTML = '';
+    		document.getElementById("itemNumber").innerHTML="";
+	       	}
        	}
-           	
+       	
+   	$scope.placeOrder = function() {
+ 	if(document.getElementById("address").value=="")
+ 	{
+ 	alert("Fill Address");
+ 	return;
+ 	}
+ 	if(document.getElementById("city").value=="")
+ 	{
+ 	alert("Fill city");
+ 	return;
+ 	}
+ 	if(document.getElementById("state").value=="")
+ 	{
+ 	alert("Fill state");
+ 	return;
+ 	}
+ 	if(document.getElementById("zipcode").value=="")
+ 	{
+ 	alert("Fill zip code");
+ 	return;
+ 	}
+ 	if(document.getElementById("cardNumber").value=="")
+ 	{
+ 	alert("Fill Card Number");
+ 	return;
+ 	}
+ 	if(document.getElementById("name").value=="")
+ 	{
+ 	alert("Fill name");
+ 	return;
+ 	}
+ 	if(document.getElementById("expiration").value=="")
+ 	{
+ 	alert("Fill expiration");
+ 	return;
+ 	}
+ 	if(document.getElementById("billZipcode").value=="")
+ 	{
+ 	alert("Fill billing zip code");
+ 	return;
+ 	}
+ 	
+   	if(sessionStorage.getItem("cart")!=null)
+   	{
+   	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	if(dd<10){
+	 dd='0'+dd
+	} 
+	if(mm<10){
+	 mm='0'+mm
+	} 
+	var today = yyyy+'-'+mm+'-'+dd;
+	   	
+	$http({
+	            method: 'POST',
+	            url: '/placeOrder',
+	            data: { "orderDetails": sessionStorage.getItem("cart"),"city":document.getElementById("city").value,"state":document.getElementById("state").value,"zip":document.getElementById("zipcode").value,"date":today}
+	            
+	         }).success(function(response){
+	          alert("Order Placed");
+	          sessionStorage.removeItem("cart");
+	          displayCart();
+	        }).error(function(error){
+	            alert("error");
+	        });
+	        }
+	        else{
+	        alert("Cart is empty");
+	        }
+	        
+	};
+    	
+    	
+    	  $scope.likeUs = function() {
+		  document.getElementById("like").disabled="true";
+		    $http({
+	            method: 'GET',
+	            url: '/likeUs',
+	          }).success(function(response){
+	          alert("Thanks");
+	     }).error(function(error){
+	            alert("error");
+	        });
+		    };   	
+		    	
+       	
 		$scope.homePage = function() {
 		window.location = '/index';
 		};

@@ -82,21 +82,13 @@
                    <li>
                         <a href="#" ng-click="findUsPage()">Find Us</a>
                     </li>
-                <li class="dropdown">
-          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="caret"></span></a>
-         	<ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a>
-            </li>
-          </ul>
-           
+               <li class="dropdown">
+          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span> <span  id="itemNumber"></span><span class="caret"></span></a>
+         	<ul class="dropdown-menu" id="theCart" role="menu">
+            </ul>
+             </li>
                 </ul>
-               
+              
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -120,10 +112,10 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img class="img-responsive img-full" src="img/pizza.jpg" width="1000" height="650" alt="">
+                        	 <iframe id="ytplayer" width="1200" height="700" src="https://www.youtube.com/embed/MEaxLBiRybI?loop=1&playlist=MEaxLBiRybI&autoplay=1&showinfo=0&controls=0&enablejsapi=1"></iframe>
                             </div>
                             <div class="item">
-                                <img class="img-responsive img-full" src="img/cake.jpg" width="1000" height="650" alt="">
+                                <img class="img-responsive img-full" src="img/pizza.jpg" width="1000" height="650" alt="">
                             </div>
                             <div class="item">
                                 <img class="img-responsive img-full" src="img/bread.jpg" width="1000" height="650" alt="">
@@ -132,8 +124,8 @@
                                 <img class="img-responsive img-full" src="img/drinks.jpg" width="1000" height="650" alt="">
                             </div>
                             <div class="item">
-                             <iframe width="1200" height="700" src="https://www.youtube.com/embed/MEaxLBiRybI?loop=1&playlist=MEaxLBiRybI&autoplay=1&showinfo=0&controls=0"></iframe>
-                            </div>
+                             <img class="img-responsive img-full" src="img/cake.jpg" width="1000" height="650" alt="">
+                             </div>
                         </div>
 
                         <!-- Controls -->
@@ -216,15 +208,61 @@
     </div> <!-- ng-app -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery.js" defer></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js" defer></script>
 
-    <!-- Script to Activate the Carousel -->
-    <script>
-    
-    function homeController($scope,$http,$location) {
+   
+    <script defer>
+     function checkOutPage()
+       {
+             	window.location = '/checkOutPage';
+       }
+        function homeController($scope,$http,$location) {
+          displayCart();
+          pageVisits();
+          function displayCart(){
+           	if(JSON.parse(sessionStorage.getItem("cart"))!=null)
+           	{
+           	var itemNumber = JSON.parse(sessionStorage.getItem("cart")).length;
+           	document.getElementById("itemNumber").innerHTML=itemNumber;
+           	var cart= JSON.parse(sessionStorage.getItem("cart"));
+           		var ul = document.getElementById("theCart");
+           		ul.innerHTML = '';
+           		
+           	for (var i=0;i<itemNumber;i++) {
+       	      	var ul = document.getElementById("theCart");
+       	    	var li = document.createElement("li");
+       	    	ul.appendChild(li);
+       	    	li.innerHTML = '<a href="">'+cart[i].name+'--$'+cart[i].cost+'</a>';
+       	       	}
+       	       	
+       	       	var li = document.createElement("li");
+       	    	ul.appendChild(li);
+       	    	li.innerHTML = '<div style="text-align: center;"><button type="button" class="btn btn-warning" onclick="checkOutPage()">Checkout</button></div>';
+       	    	
+       	       	}
+       	       	else
+       	       	{
+       	       	var ul = document.getElementById("theCart");
+    			ul.innerHTML = '';
+    			document.getElementById("itemNumber").innerHTML="";
+       	       	}
+       	}
+       	
+       	
+       	function pageVisits() {
+		  $http({
+	            method: 'GET',
+	            url: '/pageVisits',
+	          }).success(function(response){
+	          alert("Thanks");
+	     }).error(function(error){
+	            alert("error");
+	        });
+		    };   	
+		    	
 		$scope.pizzaPage = function() {
 		window.location = '/pizzaPage';
 		};
@@ -248,16 +286,47 @@
 		window.location = '/ourStoryPage';
 		};
 		$scope.contactUsPage = function() {
-		window.location = '/contactUsPage()';
+		window.location = '/contactUsPage';
 		};
 		}
 		
-		
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
+		</script>
 
+    
+    <script defer>
+
+var tag = document.createElement('script');
+
+        tag.src = "//www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('ytplayer', {
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        player.mute();
+        player.playVideo();
+    }
+
+</script>
+
+		
+		<!-- Script to Activate the Carousel -->
+		<script type="text/javascript">
+  $(document).ready(function() {
+    $('.carousel').carousel({
+      interval: 25000
+    })
+  });
+</script>
 </body>
 
 </html>

@@ -37,6 +37,10 @@ app.get('/findUsPage', home.findUsPage);
 app.get('/faqsPage', home.faqsPage);
 app.get('/ourStoryPage', home.ourStoryPage);
 app.get('/contactUsPage', home.contactUsPage);
+app.get('/checkOutPage', home.checkOutPage);
+app.post('/placeOrder', home.placeOrder);
+app.get('/likeUs', home.likeUs);
+app.get('/pageVisits', home.pageVisits);
 
 app.post('/insertUser', home.insertUser);
 app.get('/successInsert', home.successInsert);

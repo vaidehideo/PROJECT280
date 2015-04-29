@@ -13,7 +13,7 @@
 	
 	<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	 -->
 	 
     <!-- Bootstrap Core CSS -->
@@ -26,6 +26,13 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
+
+	<!-- jQuery -->
+    <script src="js/jquery.js" defer></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js" defer></script>
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,8 +53,8 @@
 <div ng-app="" ng-controller="pizzaController">
 <header>
     <div class="brand">Pizza Lelo Pizza</div>
-    <div class="address-bar">Happy Pizzas To Make Happy Times</div>
-
+   	<div class="address-bar">Happy Pizzas To Make Happy Times</div>
+	  
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -84,25 +91,106 @@
                         <a href="#" ng-click="findUsPage()">Find Us</a>
                     </li>
                 <li class="dropdown">
-          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="caret"></span></a>
-         	<ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a>
-            </li>
-          </ul>
-           
-                </ul>
+                
+          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span><span  id="itemNumber"></span> <span class="caret"></span></a>
+         	<ul class="dropdown-menu" role="menu"  id="theCart" style="color:grey;padding-left:0.2cm;">
+           </ul>
+		 	</li>
+            </ul>
                
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+    
+    <div class="container" align="center">
+     <img src="img/pizza.jpg" width="700" height="350" alt="">
+    </div>
+    <br>
+    
+      <div class="container" align="center">
+      <div class="row">
+      
+  			<div class="col-sm-6" style="color:#fdcc3b; border:3px solid #d4a26f ;">
+  			<br>
+  			<figure>
+  			<img  align="left" src="img/veg.jpg" width="200" height="100" alt="">
+  			<h4>VEGGIE LOVER</h4>
+  			<figcaption style="font-size: 1.20em;color:white">Classic marinara sauce, fresh mushrooms, fresh red onions, fresh green bell peppers, Roma tomatoes and black olives.</figcaption>
+			</figure>	
+			<br>
+			
+<div style="padding-right:10px;float:left;">
+<select style="border-radius: 25px;border:3px solid;color:grey;text-indent:2px;font-weight:bold" id="p1">
+  <option value="Pan Pizza">Pan Pizza</option>
+  <option value="Hand Tossed">Hand Tossed Pizza</option>
+  <option value="Cheesy Crust">Cheesy Crust</option>
+  <option value="Thin Crispy">Thin & Crispy</option>
+</select>
+</div>
+
+<div style="float:left;">
+<select style="border-radius: 25px;border:3px solid;color:grey;text-indent:2px;font-weight:bold" id="ps1">
+  <option value="Large">Large</option>
+  <option value="Medium">Medium</option>
+  <option value="Small">Small</option>
+</select>
+</div>		
+<span style="float:left;padding-left:0.5cm;font-size:170%;color:white;"><strong>$9.99</strong></span>	
+			<button type="button" class="btn btn-warning" ng-click="addOrder(1)">Add to Order</button>
+			<br><br>
+  			</div>
+  				
+  					
+  			<div class="col-sm-6" style="color:#fdcc3b; border:3px solid #d4a26f ;">
+  			<br>
+  			<figure>
+  			<img  align="left" src="img/cheese.jpg" width="200" height="100" alt="">
+  			<h4>CHEESE LOVER</h4>
+  			<figcaption style="font-size: 1.20em;color:white">Creamy garlic Parmesan sauce topped with 50% more cheese than our standard recipes flavored with Parmesan.</figcaption>
+			</figure>	
+			<br>
+			
+<div style="padding-right:10px;float:left;">
+<select style="border-radius: 25px;border:3px solid;color:grey;text-indent:2px;font-weight:bold" id="p2">
+  <option value="Pan Pizza">Pan Pizza</option>
+  <option value="Hand Tossed">Hand Tossed Pizza</option>
+  <option value="Cheesy Crust">Cheesy Crust</option>
+  <option value="Thin Crispy">Thin & Crispy</option>
+</select>
+</div>
+
+<div style="float:left;">
+<select style="border-radius: 25px;border:3px solid;color:grey;text-indent:2px;font-weight:bold" id="ps2">
+  <option value="Large">Large</option>
+  <option value="Medium">Medium</option>
+  <option value="Small">Small</option>
+</select>
+</div>	
+			<span style="float:left;padding-left:0.5cm;font-size:170%;color:white;"><strong>$15.99</strong></span>		
+			<button type="button" class="btn btn-warning" ng-click="addOrder(2)">Add to Order</button>
+			<br><br>
+  			</div>
+  	
+  			</div>
+  			
+  			
+  			      <div class="row">
+      
+  			<div class="col-sm-6" style="color:#fdcc3b; border:3px solid #d4a26f ;">
+  			
+  			<h3>ORDER</h3>
+  			</div>
+  					
+  			<div class="col-sm-6" style="color:#fdcc3b; border:3px solid #d4a26f ;">
+  			<h3>ORDER</h3>
+  			</div>
+  			</div>
+  			</div>
+    
+    
+    
     </header>
     <footer>
 
@@ -128,41 +216,105 @@
             
             <p align="center">Copyright &copy; pizzalelopizza-pizzalelopizza.rhcloud.com</p>
     </footer>
-    </div> <!-- ng-app -->
+ 
     
        <script>
-    
-    function pizzaController($scope,$http,$location) {
-		$scope.homePage = function() {
-		window.location = '/index';
-		};
-		$scope.pizzaPage = function() {
-		window.location = '/pizzaPage';
-		};
-		$scope.buildYourOwnPage = function() {
-		window.location = '/buildYourOwnPage';
-		};
+       function checkOutPage()
+       {
+             	window.location = '/checkOutPage';
+       }
+        function pizzaController($scope,$http,$location) {
+         		displayCart();
+         
+           	function displayCart(){
+           	if(JSON.parse(sessionStorage.getItem("cart"))!=null)
+           	{
+           	var itemNumber = JSON.parse(sessionStorage.getItem("cart")).length;
+           	document.getElementById("itemNumber").innerHTML=itemNumber;
+           	var cart= JSON.parse(sessionStorage.getItem("cart"));
+           		var ul = document.getElementById("theCart");
+           		ul.innerHTML = '';
+           		
+           	for (var i=0;i<itemNumber;i++) {
+       	      	var ul = document.getElementById("theCart");
+       	    	var li = document.createElement("li");
+       	    	ul.appendChild(li);
+       	    	li.innerHTML = '<a href="">'+cart[i].name+'--$'+cart[i].cost+'</a>';
+       	       	}
+       	       	
+       	       	var li = document.createElement("li");
+       	    	ul.appendChild(li);
+       	    	li.innerHTML = '<div style="text-align: center;"><button type="button" class="btn btn-warning" onclick="checkOutPage()">Checkout</button></div>';
+       	    	
+       	       	}
+       	       	else
+       	       	{
+       	       	var ul = document.getElementById("theCart");
+    			ul.innerHTML = '';
+    			document.getElementById("itemNumber").innerHTML="";
+       	       	}
+       	}
+           	
+           	$scope.addOrder= function(pizzaType) {
+           	if(pizzaType==1)
+           	{
+           	var item={"name":"Veggie Lover","vegnv":"v","crust":document.getElementById("p1").value,"side":"","cost":"9.99","topping1":"Mushrooms","topping2":"Onions","topping3":"GreenPeppers","topping4":"Tomatoes","topping5":"Olives","topping6":"","topping7":"","topping8":"","size":document.getElementById("ps2").value};
+           	}
+           	else if(pizzaType==2)
+           	{
+           	var item={"name":"Cheese Lover","crust":document.getElementById("p2").value,"vegnv":"v","side":"","cost":"15.99","topping1":"Cheese","topping2":"","topping3":"","topping4":"","topping5":"","topping6":"","topping7":"","topping8":"","size":document.getElementById("ps2").value};
+           	}
+             	var cart= JSON.parse(sessionStorage.getItem("cart"));
+       	if(cart==null)
+       		{
+       		cart=[item];
+       		console.log(cart.length)
+       		sessionStorage.setItem("cart",JSON.stringify(cart));
+       		}
+       		else
+       		{
+       		console.log("cart not empty");
+       		cart.push(item);
+       		sessionStorage.setItem("cart",JSON.stringify(cart));
+       		}
+       	
+       		 console.log(JSON.parse((sessionStorage.getItem("cart"))));
+       		 displayCart();
+       		};
+           	
+       
+       		$scope.homePage = function() {
+       		window.location = '/index';
+       		};
+       		$scope.pizzaPage = function() {
+       		window.location = '/pizzaPage';
+       		};
+       		$scope.buildYourOwnPage = function() {
+       		window.location = '/buildYourOwnPage';
+       		};
+       		
+       		$scope.sidesPage = function() {
+       		window.location = '/sidesPage';
+       		};
+       		$scope.dealsPage = function() {
+       		window.location = '/dealsPage';
+       		};
+       		$scope.findUsPage = function() {
+       		window.location = '/findUsPage';
+       		};
+       		$scope.faqsPage = function() {
+       		window.location = '/faqsPage';
+       		};
+       		$scope.ourStoryPage = function() {
+       		window.location = '/ourStoryPage';
+       		};
+       		$scope.contactUsPage = function() {
+       		window.location = '/contactUsPage';
+       		};
+       		}
+       		</script>
 		
-		$scope.sidesPage = function() {
-		window.location = '/sidesPage';
-		};
-		$scope.dealsPage = function() {
-		window.location = '/dealsPage';
-		};
-		$scope.findUsPage = function() {
-		window.location = '/findUsPage';
-		};
-		$scope.faqsPage = function() {
-		window.location = '/faqsPage';
-		};
-		$scope.ourStoryPage = function() {
-		window.location = '/ourStoryPage';
-		};
-		$scope.contactUsPage = function() {
-		window.location = '/contactUsPage()';
-		};
-		}
-		</script>
+	   </div> <!-- ng-app -->
     </body>
 
 </html>

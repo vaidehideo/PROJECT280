@@ -45,7 +45,7 @@
 <div ng-app="" ng-controller="homeController">
 <header>
     <div class="brand">Pizza Lelo Pizza</div>
-    <div class="address-bar">Happy Pizzas To Make Happy Times</div>
+    <div id="google_translate_element" style="margin-right:12px;" align="right"></div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Business Casual</a>
+                <a class="navbar-brand" href="index.html">Pizza Lelo Pizza</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -72,15 +72,6 @@
                     </li>
                     <li>
                         <a href ng-click="buildYourOwnPage()">BUILD YOUR OWN</a>
-                    </li>
-<li>
-                        <a href ng-click="sidesPage()">SIDES</a>
-                    </li>
-                    <li>
-                        <a href ng-click="dealsPage()">DEALS</a>
-                    </li>
-                   <li>
-                        <a href ng-click="findUsPage()">Find Us</a>
                     </li>
                <li class="dropdown">
           	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span> <span  id="itemNumber"></span><span class="caret"></span></a>
@@ -322,6 +313,13 @@ var player;
     })
   });
 </script>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en'
+  }, 'google_translate_element');
+}
+</script><script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>

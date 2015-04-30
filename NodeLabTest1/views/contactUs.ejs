@@ -26,7 +26,12 @@
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="css/animate.css" rel="stylesheet" />
 	
+	 <!-- Squad theme CSS -->
+	<link href="css/styles_contact.css" rel="stylesheet">
+		
 	<!-- jQuery -->
     <script src="js/jquery.js" defer></script>
 
@@ -103,20 +108,122 @@
         <!-- /.container -->
     </nav>
     </header>
+    <section id="contact" class="home-section text-center">
+	<div class="heading-contact">
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<div class="wow bounceInDown" data-wow-delay="0.4s">
+				<div class="section-heading">
+				<h2>Get in touch</h2>
+				<i class="fa fa-2x fa-angle-down"></i>
+
+				</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="container">
+
+	<div class="row">
+		<div class="col-lg-2 col-lg-offset-5">
+			<hr class="marginbot-50">
+		</div>
+	</div>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="boxed-grey">
+            <form id="contact-form">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">
+                            Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">
+                            Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                            </span>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">
+                            Subject</label>
+                        <select id="subject" name="subject" class="form-control" required="required">
+                            <option value="na" selected="">Choose One:</option>
+                            <option value="service">General Customer Service</option>
+                            <option value="suggestions">Complaints</option>
+                            <option value="product">Delivery</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">
+                            Message</label>
+                        <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                            placeholder="Message"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-skin pull-right" ng-click="homePage" id="btnContactUs">
+                        Send Message</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+	
+	<div class="col-lg-4">
+		<div class="widget-contact">
+			<h5>Main Office</h5>
+			
+			<address>
+			  <strong>Pizza Lelo Pizza.</strong><br>
+			  Tower 795 Folsom Ave, Beautiful Suite 600<br>
+			  San Francisco, CA 94107<br>
+			  <abbr title="Phone">P:</abbr> (123) 456-7890
+			</address>
+
+			<address>
+			  <strong>Email</strong><br>
+			  <a href="mailto:#">email.contactus@pizzalelopizza.com</a>
+			</address>	
+			<address>
+			  <strong>We're on social networks</strong><br>
+                   	<ul class="company-social">
+                        <li class="social-facebook"><a href="#" ng-click="homePage()"><i class="fa fa-facebook"></i></a></li>
+                        <li class="social-twitter"><a href="#" ng-click="homePage()"><i class="fa fa-twitter"></i></a></li>
+                        <li class="social-dribble"><a href="#" ng-click="homePage()"><i class="fa fa-dribbble"></i></a></li>
+                        <li class="social-google"><a href="#" ng-click="homePage()"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>	
+			</address>					
+		
+		</div>	
+	</div>
+</div>	
+
+	</div>
+	</section>
+    
     <footer>
 
         <div class="container" align="center">
     
         <div class="row">
   			<div class="col-sm-6">
-  			<h3>ORDER</h3>
+  			<h3 style="color:black;">ORDER</h3>
   			<a href="#" ng-click="sidesPage()"><h4 style="color:grey;">Sides</h4></a>
   			<a href="#" ng-click="pizzaPage()"><h4 style="color:grey;">Pizza</h4></a>
   			<a href="#" ng-click="dealsPage()"><h4 style="color:grey;">Deals</h4></a>
   			<a href="#" ng-click="buildYourOwnPage()"><h4 style="color:grey;">Build your Own</h4></a>
   			</div>
   			<div class="col-sm-6">
-  			<h3>ABOUT US</h3>
+  			<h3 style="color:black;">ABOUT US</h3>
   			<a href="#" ng-click="faqsPage()"><h4 style="color:grey;">FAQs</h4></a>
   			<a href="#" ng-click="findUsPage()"><h4 style="color:grey;">Find Us</h4></a>
   			<a href="#" ng-click="ourStoryPage()"><h4 style="color:grey;">Our Story</h4></a>
@@ -196,6 +303,15 @@
 		};
 		}
 		</script>
+		
+		<script src="js/jquery.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+	    <script src="js/jquery.easing.min.js"></script>	
+		<script src="js/jquery.scrollTo.js"></script>
+		<script src="js/wow.min.js"></script>
+	    <!-- Custom Theme JavaScript -->
+	    <script src="js/custom.js"></script>
+
     </body>
 
 </html>

@@ -4,7 +4,8 @@ var mysql = require('./mysql');
 function pizzaPage(req,res)
 {
 	
-	ejs.renderFile('./views/pizza.ejs',function(err, result) {
+	 res.render('pizza');
+/*	ejs.renderFile('./views/pizza.ejs',function(err, result) {
   		// render on success
         if (!err) {
             res.end(result);
@@ -14,13 +15,13 @@ function pizzaPage(req,res)
             res.end('An error occurred');
             console.log(err);
         }
-	 });
+	 });*/
 }
 
 function buildYourOwnPage(req,res)
 {
-	
-	ejs.renderFile('./views/buildYourOwn.ejs',function(err, result) {
+	res.render('buildYourOwn');
+/*	ejs.renderFile('./views/buildYourOwn.ejs',function(err, result) {
   		// render on success
         if (!err) {
             res.end(result);
@@ -30,13 +31,13 @@ function buildYourOwnPage(req,res)
             res.end('An error occurred');
             console.log(err);
         }
-	 });
+	 });*/
 }
 
 function sidesPage(req,res)
 {
-	
-	ejs.renderFile('./views/sides.ejs',function(err, result) {
+	res.render('sides');
+	/*ejs.renderFile('./views/sides.ejs',function(err, result) {
   		// render on success
         if (!err) {
             res.end(result);
@@ -46,13 +47,13 @@ function sidesPage(req,res)
             res.end('An error occurred');
             console.log(err);
         }
-	 });
+	 });*/
 }
 
 function dealsPage(req,res)
 {
-	
-	ejs.renderFile('./views/deals.ejs',function(err, result) {
+	res.render('deals');
+	/*ejs.renderFile('./views/deals.ejs',function(err, result) {
   		// render on success
         if (!err) {
             res.end(result);
@@ -62,13 +63,13 @@ function dealsPage(req,res)
             res.end('An error occurred');
             console.log(err);
         }
-	 });
+	 });*/
 }
 
 function findUsPage(req,res)
 {
-	
-	ejs.renderFile('./views/findUs.ejs',function(err, result) {
+	res.render('findUs');
+	/*ejs.renderFile('./views/findUs.ejs',function(err, result) {
   		// render on success
         if (!err) {
             res.end(result);
@@ -78,13 +79,13 @@ function findUsPage(req,res)
             res.end('An error occurred');
             console.log(err);
         }
-	 });
+	 });*/
 }
 
 function faqsPage(req,res)
 {
-	
-	ejs.renderFile('./views/faqs.ejs',function(err, result) {
+	res.render('faqs');
+	/*ejs.renderFile('./views/faqs.ejs',function(err, result) {
   		// render on success
         if (!err) {
             res.end(result);
@@ -94,12 +95,13 @@ function faqsPage(req,res)
             res.end('An error occurred');
             console.log(err);
         }
-	 });
+	 });*/
 }
 
 function ourStoryPage(req,res)
 {
-	
+	res.render('ourStory');
+	/*
 	ejs.renderFile('./views/ourStory.ejs',function(err, result) {
   		// render on success
         if (!err) {
@@ -110,13 +112,13 @@ function ourStoryPage(req,res)
             res.end('An error occurred');
             console.log(err);
         }
-	 });
+	 });*/
 }
 
 function contactUsPage(req,res)
 {
-	
-	ejs.renderFile('./views/contactUs.ejs',function(err, result) {
+	res.render('contactUs');
+	/*ejs.renderFile('./views/contactUs.ejs',function(err, result) {
   		// render on success
         if (!err) {
             res.end(result);
@@ -126,12 +128,13 @@ function contactUsPage(req,res)
             res.end('An error occurred');
             console.log(err);
         }
-	 });
+	 });*/
 }
 
 function checkOutPage(req,res)
 {
-	console.log("here")
+	res.render('checkOut');
+	/*
 	ejs.renderFile('./views/checkOut.ejs',function(err, result) {
   		// render on success
         if (!err) {
@@ -142,7 +145,7 @@ function checkOutPage(req,res)
             res.end('An error occurred');
             console.log(err);
         }
-	 });
+	 });*/
 }
 
 function placeOrder(req,res)
@@ -237,27 +240,6 @@ function pageVisits(req,res)
 	},getVisits);
 }
 
-function insertUser(req,res)
-{
-	console.log("hi");
-	req.session.name=req.param("username");
-	console.log("session name:"+req.session.name);
-	var insertUserQuery="insert into people value('"+req.param("username")+"')";
-	console.log("Query is:"+insertUserQuery);
-	mysql.fetchData(function(err,results){
-		if(err){
-			throw err;
-		}
-		else 
-		{
-			res.render('successInsert', { name: req.param("username") });
-		}  
-	},insertUserQuery);
-}
-
-function successInsert(req,res){
-	  res.render('successInsert', { name: req.session.name });
-	};
 
 
 	
@@ -273,5 +255,3 @@ exports.checkOutPage=checkOutPage;
 exports.placeOrder=placeOrder;
 exports.likeUs=likeUs;
 exports.pageVisits=pageVisits;
-exports.insertUser=insertUser;
-exports.successInsert=successInsert;

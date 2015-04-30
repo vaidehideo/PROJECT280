@@ -14,8 +14,8 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 /* var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
- var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-*/
+ var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';*/
+
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -42,15 +42,13 @@ app.post('/placeOrder', home.placeOrder);
 app.get('/likeUs', home.likeUs);
 app.get('/pageVisits', home.pageVisits);
 
-app.post('/insertUser', home.insertUser);
-app.get('/successInsert', home.successInsert);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-
-/* http.createServer(app).listen(server_port, server_ip_address, function(){
+/*
+ http.createServer(app).listen(server_port, server_ip_address, function(){
   console.log('Express server listening on server' +server_ip_address+ ' and port ' + server_port);
 });*/
  

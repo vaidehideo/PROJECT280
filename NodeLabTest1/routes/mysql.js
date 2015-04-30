@@ -7,6 +7,11 @@ function getConnection(){
 		    user     : 'root',
 		    password : '',
 		    database : 'pizzalelopizza'
+	  /*  host     : '127.6.202.130',
+	    user     : 'adminIjHhck1',
+	    password : 'KwWNBqaGMEaX',
+	    database : 'pizzalelopizza'
+*/
 	});
 	return connection;
 }

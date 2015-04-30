@@ -44,8 +44,129 @@
 	 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	 <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <meta name = "format-detection" content = "telephone=no" />
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+ 
+    
 	
+    <link rel="stylesheet" href="css/touchTouch.css">
+    
+	<script src="js/jquery.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src="js/superfish.js"></script>
+    <script src="js/jquery.mobilemenu.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.ui.totop.js"></script>
+    <script src="js/jquery.touchSwipe.min.js"></script>
+    <script src="js/jquery.equalheights.js"></script>
+    <script  src="js/touchTouch.jquery.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.isotope.min.js"></script>	
+<script>
+    
+    $(window).load(function() {  
+    var $container = $('#container');
+    //Run to initialise column sizes
+    updateSize();
 
+    //Load masonry when images all loaded
+    $container.imagesLoaded( function(){
+
+        $container.isotope({
+            // options
+            itemSelector : '.element',	
+            layoutMode : 'masonry',
+            transformsEnabled: true,
+            columnWidth: function( containerWidth ) {
+                containerWidth = $browserWidth;
+                return Math.floor(containerWidth / $cols);
+              }
+        });
+    });
+    
+	    // update columnWidth on window resize
+    $(window).smartresize(function(){  
+        updateSize();
+        $container.isotope( 'reLayout' );
+    });
+	
+    //Set item size
+    function updateSize() {
+        $browserWidth = $container.width();
+        $cols = 4;
+
+        if ($browserWidth >= 1170) {
+            $cols = 4;
+        }
+        else if ($browserWidth >= 800 && $browserWidth < 1170) {
+            $cols = 3;
+        }
+        else if ($browserWidth >= 480 && $browserWidth < 800) {
+            $cols = 2;
+        }
+        else if ($browserWidth >= 320 && $browserWidth < 480) {
+            $cols = 1;
+        }
+        else if ($browserWidth < 401) {
+            $cols = 1;
+        }
+        //console.log("Browser width is:" + $browserWidth);
+        //console.log("Cols is:" + $cols);
+
+        // $gutterTotal = $cols * 20;
+		$browserWidth = $browserWidth; // - $gutterTotal;
+        $itemWidth = $browserWidth / $cols;
+        $itemWidth = Math.floor($itemWidth);
+
+        $(".element").each(function(index){
+            $(this).css({"width":$itemWidth+"px"});             
+        });
+			
+
+    
+	  var $optionSets = $('#options .option-set'),
+	      $optionLinks = $optionSets.find('a');
+
+	  $optionLinks.click(function(){
+	    var $this = $(this);
+	    // don't proceed if already selected
+	    if ( $this.hasClass('selected') ) {
+	      return false;
+	    }
+	    var $optionSet = $this.parents('.option-set');
+	    $optionSet.find('.selected').removeClass('selected');
+	    $this.addClass('selected');
+
+	    // make option object dynamically, i.e. { filter: '.my-filter-class' }
+	    var options = {},
+	        key = $optionSet.attr('data-option-key'),
+	        value = $this.attr('data-option-value');
+	    // parse 'false' as false boolean
+	    value = value === 'false' ? false : value;
+	    options[ key ] = value;
+	    if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
+	      // changes in layout modes need extra logic
+	      changeLayoutMode( $this, options )
+	    } else {
+	      // otherwise, apply new options
+	      $container.isotope( options );
+	    }
+	    
+	    return false;
+	  });		
+
+    };
+
+        // Initialize the gallery
+        $('.thumb').touchTouch();
+    
+    });
+    
+  </script>
 </head>
 
 <body>
@@ -103,6 +224,193 @@
         <!-- /.container -->
     </nav>
     </header>
+    <section id="Menu" class="home-section text-center">
+		<div class="heading-contact">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="wow bounceInDown" data-wow-delay="0.4s">
+					<div class="section-heading">
+					<h2 style="color:white;">Deals</h2>
+					<i class="fa fa-2x fa-angle-down"></i>
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		
+<!--==============================content=================================-->
+
+        <div class="container" align="center">
+        	
+            <div class="row" style="padding:10px;color:#fdcc3b; border:3px solid #d4a26f ;">
+            
+        		
+                  <!-- #options -->
+                  <div class="containerExtra">
+                  <div id="container" class="clearfix">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6" >
+                    <div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/11AnyDealTile_big.png"  class="thumb"><figure ><img src="img/deals/11AnyDealTile.png" alt=""></figure><h4> Thin N Crispy $ 14.59</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition sides" data-category="transition">
+                    	<a href="img/deals/FlavorSticks_HoneySriracha_big.png"  class="thumb"><figure class="img-polaroid"><img src="img/deals/FlavorSticks_HoneySriracha.png" alt=""></figure><h4>HoneySriracha FlavorSticks $ 23.99</h4></a>
+                    </div>
+                   
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/Individual_Wing_Meal_big.png"  class="thumb"><figure><img src="img/deals/Individual_Wing_Meal.png" alt=""></figure><h4>2 MEDIUM PIZZAS $ 33.99</a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition sides" data-category="transition">
+                    	<a href="img/deals/FlavorSticks_HutFavorite_big.png"  class="thumb"><figure><img src="img/deals/FlavorSticks_HutFavorite.png" alt=""></figure><h4>HutFavorite FlavorSticks $ 23.99</a>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/BCSCDealTileImage_big.png"  class="thumb"><figure><img src="img/deals/BCSCDealTileImage.png" alt=""></figure><h4>BACON CHEESE STUFFED CRUST $ 11</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition sides" data-category="transition">
+                    	<a href="img/deals/FlavorSticks_ToastedAsiago_big.png"  class="thumb"><figure><img src="img/deals/FlavorSticks_ToastedAsiago.png" alt=""></figure><h4>ToastedAsiago FlavorSticks $ 23.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/FlavorDipper_Deal_big.png"  class="thumb"><figure><img src="img/deals/FlavorDipper_Deal.png" alt=""></figure><h4>BIG FLAVOR DIPPER PIZZA  $ 13.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition sides" data-category="transition">
+                    	<a href="img/deals/FlavorSticks_ToastedParmesan_big.png"  class="thumb"><figure ><img src="img/deals/FlavorSticks_ToastedParmesan.png" alt=""></figure><h4>ToastedParmesan FlavorSticks $ 23.99</h4></a>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/party_wing_meal_YWM_dealtile_big.png"  class="thumb"><figure><img src="img/deals/party_wing_meal_YWM_dealtile.png" alt=""></figure><h4>PARTY WING MEAL  $ 12.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition sides" data-category="transition">
+                    	<a href="img/deals/sides-breadsticks_big.png"  class="thumb"><figure><img src="img/deals/sides-breadsticks.png" alt=""></figure><h4>BreadSticks $ 23.99</strong></h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/BigDinnerBoxDealTile_big.png"  class="thumb"><figure><img src="img/deals/BigDinnerBoxDealTile.png" alt="x"></figure><h4>Big Dinner Box Deal $ 18.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="element transition deals" data-category="transition"> 
+                    	<a href="img/deals/699_pairs_big.png"  class="thumb"><figure ><img src="img/deals/699_pairs.png" alt=""></figure><h4> Two MEDIUM PIZZAS $ 17.90</h4></a>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition sides" data-category="transition">
+                    	<a href="img/deals/FlavorSticks_FieryRedPepper_big.png"  class="thumb"><figure><img src="img/deals/FlavorSticks_FieryRedPepper.png" alt=""></figure><h4>FieryRedPepper FlavorSticks $ 23.99</h4></a>
+                    </div>
+                    </diV>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/FightNight_DealTile_175x203_big.png"  class="thumb"><figure ><img src="img/deals/FightNight_DealTile_175x203.png" alt=""></figure><h4>FightNight Deal<strong>$ 6.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition sides" data-category="transition">
+                    	<a href="img/deals/sides-cheese-sticks_big.png"  class="thumb"><figure ><img src="img/deals/sides-cheese-sticks.png" alt=""></figure><h4>CheeseSticks $ 23.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/10DinnerBoxDealTileImage2_big.png"  class="thumb"><figure ><img src="img/deals/10DinnerBoxDealTileImage2.png" alt=""></figure><h4> Dinner Box Deal  $ 15.99</h4></a>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition sides" data-category="transition">
+                    	<a href="img/deals/sides-quepapas_big.png"  class="thumb"><figure ><img src="img/deals/sides-quepapas.png" alt=""></figure><h4>Quepapas  $ 23.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/wingstreet-ww-homepage_big.png"  class="thumb"><figure ><img src="img/deals/wingstreet-ww-homepage.png" alt=""></figure><h4>wing street  $ 11.00</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/Deal_pizzacookie_tile_big.png"  class="thumb"><figure ><img src="img/deals/Deal_pizzacookie_tile.png" alt=""></figure><h4>Deal pizza cookie $ 10.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="element transition deals" data-category="transition">
+                    	<a href="img/deals/FWingMeal_Tile_big.png"  class="thumb"><figure ><img src="img/deals/FWingMeal_Tile.png" alt=""></figure><h4>Wing Meal <strong>$ 23.99</h4></a>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition desserts" data-category="transition">
+                    	<a href="img/deals/cookie-dessert_big.png"  class="thumb"><figure ><img src="img/deals/cookie-dessert.png" alt=""></figure><h4>cookie dessert <strong>$ 23.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition desserts" data-category="transition">
+                    	<a href="img/deals/desserts-chocolate-dunkers_big.png"  class="thumb"><figure ><img src="img/deals/desserts-chocolate-dunkers.png" alt=""></figure><h4>Chocolate dunkers dessert<strong>$ 23.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition desserts" data-category="transition">
+                    	<a href="img/deals/desserts-cinnamon-sticks_big.png"  class="thumb"><figure ><img src="img/deals/desserts-cinnamon-sticks.png" alt=""></figure><h4>cinnamon sticks dessert<strong>$ 23.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition drinks" data-category="transition">
+                    	<a href="img/deals/Diet Pepsi in Cup_big.png"  class="thumb"><figure ><img src="img/deals/Diet Pepsi in Cup.png" alt=""></figure><h4>Diet Pepsi in Cup<strong>$ 23.99</h4></a>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition drinks" data-category="transition">
+                    	<a href="img/deals/Mountain_Dew_in_Cup_big.png"  class="thumb"><figure ><img src="img/deals/Mountain_Dew_in_Cup.png" alt=""></figure><h4>Mountain Dew in Cup<strong>$ 23.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition drinks" data-category="transition">
+                    	<a href="img/deals/Pepsi in Cup_big.png"  class="thumb"><figure ><img src="img/deals/Pepsi in Cup.png" alt=""></figure><h4>Pepsi in Cup<strong>$ 23.99</h4></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="element transition drinks" data-category="transition">
+                    	<a href="img/deals/Sierra Mist in Cup_big.png"  class="thumb"><figure ><img src="img/deals/Sierra Mist in Cup.png" alt=""></figure><h4>Sierra Mist in Cup<strong>$ 23.99</h4></a>
+                    </div>
+                    </div>
+					</div>
+					</div>
+					</div>
+										
+		       </div>
+               </div>
+	        </div>
+            </div>
+        	</div>
+    </div>
+ </section>
+<script src="js/tm-scripts.js"></script>
     <footer>
 
         <div class="container" align="center">
@@ -117,10 +425,10 @@
   			</div>
   			<div class="col-sm-6">
   			<h3>ABOUT US</h3>
-  			<a href="#" ng-click="faqsPage()"><h4 style="color:grey;">FAQs</h4></a>
-  			<a href="#" ng-click="findUsPage()"><h4 style="color:grey;">Find Us</h4></a>
-  			<a href="#" ng-click="ourStoryPage()"><h4 style="color:grey;">Our Story</h4></a>
-  			<a href="#" ng-click="contactUsPage()"><h4 style="color:grey;">Contact Us</h4></a>
+  			<a href ng-click="faqsPage()"><h4 style="color:grey;">FAQs</h4></a>
+  			<a href ng-click="findUsPage()"><h4 style="color:grey;">Find Us</h4></a>
+  			<a href ng-click="ourStoryPage()"><h4 style="color:grey;">Our Story</h4></a>
+  			<a href ng-click="contactUsPage()"><h4 style="color:grey;">Contact Us</h4></a>
   			</div>
 		</div>
             </div>

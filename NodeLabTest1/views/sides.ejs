@@ -3,11 +3,11 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Pizzalelopizza a pizza ordering website where you can easily customize your pizza, located in many places in united states.">
-<meta name="author" content="CMPE280 Team10">
-<meta name="keyword" content="Pizzalelopizza, Creative, Pizza, Analytics, Food, Bootstrap, Responsive, Retina, Minimal">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <title>Pizza Lelo Pizza</title>
 	
@@ -46,7 +46,197 @@
 	 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	 <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	
+
+
+    <link rel="stylesheet" href="css/main_css.css">
+
+    <script>
+        window.onload = function() {
+
+            /**
+             *
+             *	Demo 1: Elements
+             *
+             */
+            var dropZoneOne = document.querySelector('#drop-target-one');
+            var dragElements = document.querySelectorAll('#drag-elements li');
+            var elementDragged = null;
+
+
+            for (var i = 0; i < dragElements.length; i++) {
+
+                // Event Listener for when the drag interaction starts.
+                dragElements[i].addEventListener('dragstart', function(e) {
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('Text/html', e.target.id); // sends the dragged images data.
+                    elementDragged = this;
+                });
+
+                // Event Listener for when the drag interaction finishes.
+                dragElements[i].addEventListener('dragend', function(e) {
+                    elementDragged = null;
+                });
+            };
+
+            // Event Listener for when the dragged element is over the drop zone.
+            dropZoneOne.addEventListener('dragover', function(e) {
+                if (e.preventDefault) {
+                    e.preventDefault();
+                }
+
+                e.dataTransfer.dropEffect = 'move';
+
+                return false;
+            });
+
+            // Event Listener for when the dragged element enters the drop zone.
+            dropZoneOne.addEventListener('dragenter', function(e) {
+                this.className = "over";
+            });
+
+            // Event Listener for when the dragged element leaves the drop zone.
+            dropZoneOne.addEventListener('dragleave', function(e) {
+                this.className = "";
+            });
+
+            // Event Listener for when the dragged element dropped in the drop zone.
+            dropZoneOne.addEventListener('drop', function(e) {
+                if (e.preventDefault) e.preventDefault();
+                if (e.stopPropagation) e.stopPropagation();
+
+                this.className = "";
+
+                 sidetype = e.dataTransfer.getData("text/html");//retrieves dropped images data.
+
+                this.innerHTML = "Item added to cart!!! Add More ";
+                var sidenum;
+                if(sidetype=="drag1")
+                {
+                     sidenum=1;
+                    addSides(1);
+                }
+                else if(sidetype=="drag2")
+                {
+                    sidenum=2;
+                    addSides(2);
+                }
+
+                else if(sidetype=="drag3")
+                {
+                    sidenum=3;
+                    addSides(3);
+                }
+
+                else(sidetype=="drag4")
+                {
+                    sidenum=4;
+                    addSides(4);
+                }
+                // Remove the element from the list.
+                document.querySelector('#drag-elements').removeChild(elementDragged);
+                elementDragged = null;
+
+                return false;
+            });
+
+             function addSides(sidenum) {
+                if (sidenum == 1) {
+                    var item = {"name": "Breadsticks", "vegnv": "v", "cost": "7.00"};
+                }
+                else if (sidenum == 2) {
+                    var item = {"name": "Pepsi", "vegnv": "v", "cost": "2.99"};
+                }
+                else if(sidenum == 3){
+                    var item = {"name": "cinammon sticks", "vegnv": "v", "cost": "7.99"};
+
+                }
+                else{
+                var item = {"name": "cookies", "vegnv": "v", "cost": "6.99"};
+                }
+
+                var cart= JSON.parse(sessionStorage.getItem("cart"));
+                if(cart==null)
+                {
+                    cart=[item];
+                    console.log(cart.length)
+                    sessionStorage.setItem("cart",JSON.stringify(cart));
+                }
+                else
+                {
+                    console.log("cart not empty");
+                    cart.push(item);
+                    sessionStorage.setItem("cart",JSON.stringify(cart));
+                }
+
+                console.log(JSON.parse((sessionStorage.getItem("cart"))));
+                displayCart();
+            };
+
+
+
+
+
+
+
+            /**
+             *
+             *	Demo 2
+             *
+             */
+            var dropZoneTwo = document.querySelector('#dd-files');
+            var fileContentPane = document.querySelector('#file-content');
+
+            // Event Listener for when the dragged file is over the drop zone.
+            dropZoneTwo.addEventListener('dragover', function(e) {
+                if (e.preventDefault) e.preventDefault();
+                if (e.stopPropagation) e.stopPropagation();
+
+                e.dataTransfer.dropEffect = 'copy';
+            });
+
+            // Event Listener for when the dragged file enters the drop zone.
+            dropZoneTwo.addEventListener('dragenter', function(e) {
+                this.className = "over";
+            });
+
+            // Event Listener for when the dragged file leaves the drop zone.
+            dropZoneTwo.addEventListener('dragleave', function(e) {
+                this.className = "";
+            });
+
+            // Event Listener for when the dragged file dropped in the drop zone.
+            dropZoneTwo.addEventListener('drop', function(e) {
+                if (e.preventDefault) e.preventDefault();
+                if (e.stopPropagation) e.stopPropagation();
+
+                this.className = "";
+
+                var fileList = e.dataTransfer.files;
+
+                if (fileList.length > 0) {
+                    readTextFile(fileList[0]);
+                }
+            });
+
+
+            // Read the contents of a file.
+            function readTextFile(file) {
+                var reader = new FileReader();
+
+                reader.onloadend = function(e) {
+                    if (e.target.readyState == FileReader.DONE) {
+                        var content = reader.result;
+                        fileContentPane.innerHTML = "File: " + file.name + "\n\n" + content;
+                    }
+                }
+
+                reader.readAsBinaryString(file);
+            }
+
+        };
+
+    </script>
+
 
 </head>
 
@@ -104,6 +294,34 @@
         <!-- /.container -->
     </nav>
     </header>
+</div>
+</body>
+<body>
+    <div class="container1">
+        <h1 style="color: white">Add Sides to your Order</h1>
+
+        <p style="color: white">Drag the items to the drop zone to add into your cart.</p>
+        <div id="dd-elements" class="clearfix">
+            <ul id="drag-elements">
+                <li draggable="true"><img src="img/breadsticks.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width:"200px" height="200px" align="center ">
+                </li>
+                <li draggable="true"><img src="img/pepsi.jpg" draggable="true" ondragstart="drag(event)" id="drag2" width:"200px" height="200px" align="center ">
+                </li>
+                <li draggable="true"><img src="img/cinnamon.jpg" draggable="true" ondragstart="drag(event)" id="drag3" width:"130px" height="190px" align="center "></li>
+                <li draggable="true"><img src="img/cookie1.jpg" draggable="true" ondragstart="drag(event)" id="drag4" width:"150px" height="200px" align="center "></li>
+            </ul>
+            <div><p style="color: #fffd59">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Breadsticks $7.00 &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                Pepsi $2.99&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;Cinammon Sticks $ 7.99&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;Chocolate Cookie $ 6.99</p> </div>
+            <div id="drop-target-one">
+               <p style="color: white"> Drop Here! To add to your cart</p>
+            </div>
+        </div>
+    </div>
     <footer>
 
         <div class="container" align="center">
@@ -130,7 +348,7 @@
     </footer>
     </div> <!-- ng-app -->
     
-       <script defer>
+       <script>
     	 function checkOutPage()
        {
              	window.location = '/checkOutPage';

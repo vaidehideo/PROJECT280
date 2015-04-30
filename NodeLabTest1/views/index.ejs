@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Pizzalelopizza a pizza ordering website where you can easily customize your pizza, located in many places in united states.">
 <meta name="author" content="CMPE280 Team10">
+<meta name="google-site-verification" content="57zSwGo7k6Yu8d8CuUWR7AaVC1N25cDXWR7SzENqKOk" />
 <meta name="keyword" content="Pizzalelopizza, Creative, Pizza, Analytics, Food, Bootstrap, Responsive, Retina, Minimal">
 <link rel="shortcut icon" href="img/favicon.png">
     <title>Pizza Lelo Pizza</title>
@@ -45,9 +46,9 @@
 <div ng-app="" ng-controller="homeController">
 <header>
     <div class="brand">Pizza Lelo Pizza</div>
-    <div id="google_translate_element" style="margin-right:12px;" align="right"></div>
-
-    <!-- Navigation -->
+  <div id="google_translate_element" style="margin-right:12px;" align="right"></div>
+  <br>
+   <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -59,7 +60,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Pizza Lelo Pizza</a>
+                <a class="navbar-brand" href="" ng-click="homePage()">Pizza Lelo Pizza</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -103,16 +104,16 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <div class="item active">
-                            <img class="img-responsive img-full" src="img/pizza.jpg" width="1000" height="650" alt="">
+                            <img class="img-responsive img-full" src="img/pizza.jpg" width="1000" height="650" alt="pizza">
                             </div>
                             <div class="item">
-                            <img class="img-responsive img-full" src="img/bread.jpg" width="1000" height="650" alt="">
+                            <img class="img-responsive img-full" src="img/bread.jpg" width="1000" height="650" alt="bread">
                              </div>
                             <div class="item">
-                            <img class="img-responsive img-full" src="img/cake.jpg" width="1000" height="650" alt="">    
+                            <img class="img-responsive img-full" src="img/cake.jpg" width="1000" height="650" alt="cake">    
                             </div>
                             <div class="item">
-                                <img class="img-responsive img-full" src="img/drinks.jpg" width="1000" height="650" alt="">
+                                <img class="img-responsive img-full" src="img/drinks.jpg" width="1000" height="650" alt="drink">
                           </div>
 
                         <!-- Controls -->
@@ -126,7 +127,7 @@
                     <h3 class="brand-before">
                         <small>Welcome to</small>
                     </h3>
-                    <h1 class="brand-name">Pizza Lelo Pizza</h1>
+                    <h2>Pizza Lelo Pizza</h2>
                     <hr class="tagline-divider">
                   </div>
             </div>
@@ -191,6 +192,7 @@
             </div>
             
             <p align="center">Copyright &copy; pizzalelopizza-pizzalelopizza.rhcloud.com</p>
+			 <div align="center"><div class="fb-like" data-href="http://pizzalelopizza-pizzalelopizza.rhcloud.com/" data-width="200px" data-layout="standard" data-action="like" data-show-faces="false" data-share="true" align="center"></div></div>
     </footer>
     </div> <!-- ng-app -->
 
@@ -320,6 +322,26 @@ function googleTranslateElementInit() {
   }, 'google_translate_element');
 }
 </script><script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3&appId=551258181679529";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62516412-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 
 </html>

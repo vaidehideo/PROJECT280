@@ -28,6 +28,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 app.get('/', routes.index);
+app.get('/admin', routes.admin);
 app.get('/index', routes.index);
 app.get('/pizzaPage', home.pizzaPage);
 app.get('/buildYourOwnPage', home.buildYourOwnPage);
@@ -41,6 +42,20 @@ app.get('/checkOutPage', home.checkOutPage);
 app.post('/placeOrder', home.placeOrder);
 app.get('/likeUs', home.likeUs);
 app.get('/pageVisits', home.pageVisits);
+app.get('/signin', home.signin);
+app.post('/signin', home.afterSignIn);
+app.get('/dashboard', home.dashboard);
+app.get('/getDashboardData', home.getData);
+app.get('/getToppingsData', home.toppingData);
+app.get('/signout', home.signout);
+app.get('/highmap', home.highmap);
+app.get('/highmapdata', home.highmapdata);
+app.get('/vegnonvegchart', home.vnvchart);
+app.get('/crustchart', home.crustchart);
+app.get('/getcrustData', home.crustdata);
+app.get('/getVegNVData', home.getvnv);
+app.get('/populartoppings', home.populartoppings);
+
 
 
 http.createServer(app).listen(app.get('port'), function(){

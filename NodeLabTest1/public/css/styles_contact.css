@@ -7,8 +7,8 @@ body {
     height: 100%;
     font-family: 'Lato',sans-serif;
 	font-weight: 300;
-    color: white;
-    background-color: #fff;
+    
+    
 }
 
 html {
@@ -152,6 +152,10 @@ a:focus {
 /* ===========================
 --- Contact
 ============================ */
+form #contact-form{
+	
+background:none;
+}
 
 form#contact-form .form-group label {
 	text-align: left !important;

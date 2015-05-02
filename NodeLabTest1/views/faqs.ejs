@@ -8,7 +8,7 @@
 <meta name="description" content="Pizzalelopizza a pizza ordering website where you can easily customize your pizza, located in many places in united states.">
 <meta name="author" content="CMPE280 Team10">
 <meta name="keyword" content="Pizzalelopizza, Creative, Pizza, Analytics, Food, Bootstrap, Responsive, Retina, Minimal">
-
+ <link href="css/business-casual.css" rel="stylesheet">
 
     <title>Pizza Lelo Pizza</title>
 	
@@ -45,7 +45,47 @@
 	 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	 <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	
+	 <script type="text/javascript">
+	function toggle(Info) {
+	  var CState = document.getElementById(Info);
+	  CState.style.display = (CState.style.display != 'block')
+	                       ? 'block' : 'none';
+	}
+	</script>
+	<style type="text/css">
+ .FAQ {
+	cursor: hand;
+	cursor: pointer;
+	border: 1px solid #CCC;
+	text-align:left;
+	width: 700px;
+	margin-top: 20px;
+	padding: 10px;
+	color:#333
+	padding-top:10px;
+	border:3px solid #d4a26f ;
+}
+ .ANS { 
+	display:none;
+	margin-top:7px;
+	color:#fdcc3b;
+}
+img{
+float:right;
+}
+font{
+font-size: 1.0em;
+color:white;
+}
+
+
+
+footer{
+margin-top:30px;
+padding-top:15px;
+}
+
+</style>
 
 </head>
 
@@ -104,6 +144,95 @@
         <!-- /.container -->
     </nav>
     </header>
+     
+    <h4 align="center"style="color:#fdcc3b;font-size:2em;padding-bottom:10px;">Frequently Asked Questions</font></h4>
+    
+<div align="center" >
+<div align="center" id="f" style="border:3px solid #d4a26f ; width:60%;" style="padding-bottom:20px;">
+<DIV class="FAQ" onclick="toggle('faq1')">
+ <figcaption style="font-size: 1.20em;color:white"> 1. How do I reset my password if I have lost or forgotten it?<img src="img/arrow.jpg">  </figcaption>
+ <div id="faq1" class="ANS"> <font face="Verdana" size = "2"style="color:#fdcc3b;"> If you forget your password, that's OK! Just click on the "Forgot your password?" link on the Sign In page. </font></div>
+</DIV>
+
+<DIV class="FAQ" onclick="toggle('faq2')">
+ <figcaption style="font-size: 1.20em;color:white"> 2. How will I know when the restaurant received my Internet Order? <img src="img/arrow.jpg"> </figcaption>
+ <div id="faq2" class="ANS"> <font face="Verdana" size = "2"style="color:#fdcc3b;"> Once you submit your order, the Order Confirmation page will show the time your
+ order was received along with an estimated time that your order will be ready for carryout or delivery. You will also receive a confirmation email at the email 
+ address you provided at registration. And if you're still unsure about your order, you can always call the restaurant directly. </font></div>
+</DIV>
+
+<DIV class="FAQ" onclick="toggle('faq3')">
+ <figcaption style="font-size: 1.20em;color:white"> 3. Can I use my coupon online? <img src="img/arrow.jpg"></figcaption>
+ <div id="faq3" class="ANS"> <font face="Verdana" size = "2" style="color:#fdcc3b;"> In most cases you can redeem any valid Pizza Lelo coupon online. </font></div>
+</DIV>
+
+<DIV class="FAQ" onclick="toggle('faq4')">
+ <figcaption style="font-size: 1.20em;color:white"> 4. What payment options are available through Internet Ordering? <img src="img/arrow.jpg"> </figcaption>
+ <div id="faq4" class="ANS"> <font face="Verdana" size = "2" style="color:#fdcc3b;"> We accept cash, Pizza Lelo Gift Cards and eGift Cards, as well 
+ as all major credit cards. </font></div>
+</DIV>
+
+<DIV class="FAQ" onclick="toggle('faq5')">
+ <figcaption style="font-size: 1.20em;color:white"> 5. I can't find what I'm looking for.  Where can I go to ask my question?  <img src="img/arrow.jpg"></figcaption>
+ <div id="faq5" class="ANS"> <font face="Verdana" size = "2" style="color:#fdcc3b;"> If you don't see the answer to your question, please 
+ complete our contact form online or contact our customer satisfaction hotline.</font></div>
+</DIV>
+
+<DIV class="FAQ" onclick="toggle('faq6')">
+ <figcaption style="font-size: 1.20em;color:white"> 6. Can I save my credit card information for future online purchases? <img src="img/arrow.jpg"> </figcaption>
+ <div id="faq6" class="ANS"> <font face="Verdana" size = "2" style="color:#fdcc3b;"> Yes, you can securely save your credit card information to your account. For 
+ security purposes, if you share an account we recommend that you NOT store your credit information online as anyone who has access to your username and 
+ password could charge Pizza Lelo purchases to the card without your knowledge. To manage your account, just click on "My Account" at the top of the page. 
+ </font></div>
+</DIV>
+
+<DIV class="FAQ" onclick="toggle('faq7')">
+ <figcaption style="font-size: 1.20em;color:white"> 7. Can I use Pizza Lelo Gift Cards and eGift Cards for online purchases?  <img src="img/arrow.jpg"></figcaption>
+ <div id="faq7" class="ANS"> <font face="Verdana" size = "2" style="color:#fdcc3b;">Once you've signed in to the site with your username and password, select
+ "My Account" from the navigation menu. You can change your account information there.</font> </div>
+ </DIV>
+
+<DIV class="FAQ" onclick="toggle('faq8')">
+ <figcaption style="font-size: 1.20em;color:white"> 8. Where can I change my account info?  <img src="img/arrow.jpg"></figcaption>
+ <div id="faq8" class="ANS"> <font face="Verdana" size = "2" style="color:#fdcc3b;">Once you've signed in to the site with your username and password, select 
+ "My Account" from the navigation menu. You can change your account information there. </font></div>
+ </DIV>
+
+<DIV class="FAQ" onclick="toggle('faq9')">
+ <figcaption style="font-size: 1.20em;color:white">9. When I order online, shouldn't the delivery charge be the same every time?<img src="img/arrow.jpg"></figcaption>
+ <div id="faq9" class="ANS"> <font face="Verdana" size = "2" style="color:#fdcc3b;"> 
+ When you register for Internet Ordering, the system assigns each address you provide with a single Pizza Lelo 
+delivery location. If you request delivery service from multiple addresses online, the fee may vary because you may be ordering from a different Pizza Lelo 
+location. The delivery fee is, however, always the same online as it is offline. 
+  
+</font></div>
+</DIV>
+
+<DIV class="FAQ" onclick="toggle('faq10')">
+<figcaption style="font-size: 1.20em;color:white">10. How can I tell how much I am being charged for delivery service?  <img src="img/arrow.jpg"></figcaption>
+ <div id="faq10" class="ANS"> <font face="Verdana" size = "2" style="color:#fdcc3b;"> The delivery fee is listed at checkout in the itemized portion of the order
+ summary.</font></div>
+ </DIV>
+
+<DIV class="FAQ" onclick="toggle('faq11')">
+ <figcaption style="font-size: 1.20em;color:white">11. Why do I have to set my cookies to be enabled? <img src="img/arrow.jpg"></figcaption>
+ <div id="faq11" class="ANS"> <font face="Verdana" size = "2" style="color:#fdcc3b;"> To complete an order online with Pizza Lelo, it's best to have cookies enabled 
+ in your browser. By enabling cookies you will be sharing information that helps Pizza Lelo provide you a better online experience. If you don't have cookies 
+ enabled and would like to know how to change this, please refer to your browser's Help menu.</font></div>
+</DIV>
+
+<DIV class="FAQ" onclick="toggle('faq12')">
+ <figcaption style="font-size: 1.20em;color:white"> 12. What is future or advance ordering? <img src="img/arrow.jpg"> </figcaption>
+ <div id="faq12" class="ANS"> <font face="Verdana" size = "2" style="color:#fdcc3b;"> If you place an order and do NOT check the box indicating the order is for 
+ a future time or date, then the restaurant will receive your order as soon as you choose to submit the order. Upon submitting the order you will receive a 
+ confirmation page and an estimated time when your order will be ready.  If you would like to place a future order for the current day, you can choose any 
+ time in increments of 15 minutes as long as the time you enter is during restaurant hours of operation and at least 45 minutes later than the current time. 
+ We also accept orders for future dates! If you would like to place an order for a different day, you can do so up to 7 days in advance. You will receive an 
+ email confirmation when you submit the order and a reminder email on the day the order is due.</font></div>
+</DIV>
+
+
+ </div>
     <footer>
 
         <div class="container" align="center">
